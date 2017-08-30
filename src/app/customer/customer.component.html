@@ -1,0 +1,41 @@
+<div class="container customerView">
+  <div class="row">
+    <span class="col-md-6">Customer ID:</span>
+    <span class="col-md-6">{{ customer.customerId }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">First Name:</span>
+    <span class="col-md-6">{{ customer.firstName }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Last Name:</span>
+    <span class="col-md-6">{{ customer.lastName }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Phone Number:</span>
+    <span class="col-md-6">{{ customer.phoneNumber }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Email:</span>
+    <span class="col-md-6">{{ customer.email }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Age:</span>
+    <span class="col-md-6">{{ customer.age }}</span>
+  </div>
+  <div [class.underAge]="customer.age < 17"
+       [class.overAge]="customer.age >= 17"
+        (click)="onClick($event)"
+  >
+<span *ngIf="customer.age >= 17">This customer is an adult in the
+Wizarding community</span>
+    <span *ngIf="customer.age < 17">This customer is NOT an adult in the
+Wizarding community</span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">BirthDate:</span>
+    <span class="col-md-6">{{ customer.birthDate}} <ngb-datepicker></ngb-datepicker>
+      <i class="fa fa-birthday-cake fa-lg" aria-hidden="true"></i>
+      <span class="sr-only">Birthday Calendar Control</span></span>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.customerView {
+  margin: 20px;
+}
+
+.underAge {
+  background-color: pink;
+}
+
+.overAge {
+  background-color: green;
+  color: white;
+}

@@ -1,4 +1,4 @@
-<div class="container customerView">
+<div class="container customerView" *ngIf="(state != 'edit')" (dblclick)="state = 'edit'">
   <div class="row">
     <span class="col-md-6">Customer ID:</span>
     <span class="col-md-6">{{ customer.customerId }}</span>
@@ -21,8 +21,6 @@
   </div>
   <div class="row">
     <span class="col-md-6">Age:</span>
-    <!--<span class="col-md-6">{{ customer.age }}</span>-->
-
     <span class="col-md-6">
 {{ ageInYears() | number:'1.0-0' }}yrs, {{ (customer.age % 1 * 12) | number:'1.0-0' }}mos
 </span>
@@ -44,3 +42,37 @@ Wizarding community</span>
       <span class="sr-only">Birthday Calendar Control</span></span>
   </div>
 </div>
+
+
+
+<div class="container customerView"  *ngIf="state == 'edit'">
+  <div class="row">
+    <span class="col-md-6">Customer ID:</span>
+    <span class="col-md-6">{{ customer.customerId }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">First Name:</span>
+    <span class="col-md-6"><input [(ngModel)]="customer.firstName"/></span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Last Name:</span>
+    <span class="col-md-6"><input [(ngModel)]="customer.lastName"/></span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Phone Number:</span>
+    <span class="col-md-6"><input [(ngModel)]="customer.phoneNumber"/></span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Email:</span>
+    <span class="col-md-6"><input [(ngModel)]="customer.email"/></span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Birth Date:</span>
+    <span class="col-md-6"><input [(ngModel)]="customer.birthDate"/></span>
+  </div>
+  <div class="row">
+    <button (click)="update()">Update</button>
+  </div>
+</div>
+
+<button (click)="goToCustomerManagement()">Back To CustomerManagement</button>

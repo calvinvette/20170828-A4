@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Customer} from "./Customer";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'customer',
@@ -19,9 +20,26 @@ export class CustomerComponent implements OnInit, AfterViewInit {
   private _customer: Customer;
   @Input('customerId')
   private customerId: number;
+  private _state: any = "view";
 
-  constructor() {
+  get state(): any {
+    return this._state;
+  }
 
+  set state(value: any) {
+    this._state = value;
+  }
+
+  update() {
+    this.state = 'view';
+  }
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+
+  }
+
+  goToCustomerManagement() {
+    this.router.navigate(['CustomerManagement']);
   }
 
   ngOnInit() {
@@ -60,7 +78,7 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     console.log($event);
   }
 
-  ageInYears() : number {
+  ageInYears(): number {
     return Math.floor(this.customer.age);
   }
 

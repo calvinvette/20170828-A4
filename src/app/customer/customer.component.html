@@ -21,11 +21,16 @@
   </div>
   <div class="row">
     <span class="col-md-6">Age:</span>
-    <span class="col-md-6">{{ customer.age }}</span>
+    <!--<span class="col-md-6">{{ customer.age }}</span>-->
+
+    <span class="col-md-6">
+{{ ageInYears() | number:'1.0-0' }}yrs, {{ (customer.age % 1 * 12) | number:'1.0-0' }}mos
+</span>
   </div>
   <div [class.underAge]="customer.age < 17"
        [class.overAge]="customer.age >= 17"
         (click)="onClick($event)"
+        (mouseover)="onHover($event)"
   >
 <span *ngIf="customer.age >= 17">This customer is an adult in the
 Wizarding community</span>
@@ -34,7 +39,7 @@ Wizarding community</span>
   </div>
   <div class="row">
     <span class="col-md-6">BirthDate:</span>
-    <span class="col-md-6">{{ customer.birthDate}} <ngb-datepicker></ngb-datepicker>
+    <span class="col-md-6">{{ customer.birthDate | date:'medium' }} <ngb-datepicker></ngb-datepicker>
       <i class="fa fa-birthday-cake fa-lg" aria-hidden="true"></i>
       <span class="sr-only">Birthday Calendar Control</span></span>
   </div>

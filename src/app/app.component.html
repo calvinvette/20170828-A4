@@ -27,8 +27,8 @@ navigation">
 
 
 
-<div class="row" *ngFor="let cust of customers">
-  <span class="col-md-12"><customer [customerId]="cust.customerId"></customer> </span>
+<div class="row">
+  <span class="col-md-6" *ngFor="let cust of customers"><customer [customerId]="cust.customerId"></customer> </span>
 </div>
 
 
